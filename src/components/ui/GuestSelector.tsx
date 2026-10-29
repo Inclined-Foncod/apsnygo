@@ -151,7 +151,7 @@ export function GuestSelector({
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -10, scale: 0.98 }}
             transition={{ duration: 0.16, ease: 'easeOut' }}
-            className="absolute top-full left-0 mt-2 z-50 w-80 sm:w-88 bg-[#FDFCF9] border border-stone-gray-200 rounded-3xl p-5 shadow-2xl backdrop-blur-md"
+            className="absolute top-full left-0 md:left-auto md:right-0 mt-2 z-50 w-80 sm:w-88 bg-[#FDFCF9] border border-stone-gray-200 rounded-3xl p-5 shadow-2xl backdrop-blur-md"
           >
             {/* Заголовок поповера */}
             <div className="flex items-center justify-between pb-3 mb-3 border-b border-stone-gray-200/80">

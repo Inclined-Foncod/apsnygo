@@ -22,11 +22,13 @@ export default function HomePage() {
       {/* ========================================================= */}
       {/* 1. HERO СЕКЦИЯ: ПОИСК И ПРИВЕТСТВИЕ                       */}
       {/* ========================================================= */}
-      <section className="relative pt-10 pb-12 md:pt-16 md:pb-16 bg-gradient-to-b from-moss-50/40 via-white to-white overflow-hidden">
-        {/* Мягкие световые градиенты на фоне */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[360px] bg-gradient-to-r from-green-100/30 via-moss-100/30 to-stone-gray-100/20 blur-3xl -z-10 rounded-full pointer-events-none" />
+      <section className="relative pt-10 pb-16 md:pt-16 md:pb-20 bg-gradient-to-b from-moss-50/40 via-white to-white overflow-visible z-20">
+        {/* Мягкие световые градиенты на фоне (изолированный оверфлоу) */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[360px] bg-gradient-to-r from-green-100/30 via-moss-100/30 to-stone-gray-100/20 blur-3xl rounded-full" />
+        </div>
 
-        <Container>
+        <Container className="relative overflow-visible">
           <div className="text-center max-w-3xl mx-auto mb-8">
             {/* Верхний бейдж */}
             <div className="inline-flex items-center gap-2 mb-4">

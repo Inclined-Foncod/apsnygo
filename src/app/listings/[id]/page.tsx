@@ -5,17 +5,14 @@ import { Container } from '@/components/layout/Container';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
 import { MOCK_LISTINGS } from '@/lib/mock-data';
-import { formatPrice } from '@/lib/utils';
+import { BookingCard } from '@/components/listings/BookingCard';
+import { getAmenityInfo } from '@/lib/amenities';
 import {
   Star,
   MapPin,
   Waves,
-  ShieldCheck,
-  Check,
   Heart,
   Share2,
-  Calendar,
-  Users,
 } from 'lucide-react';
 
 interface ListingDetailPageProps {
@@ -31,26 +28,27 @@ export function generateStaticParams() {
 }
 
 export default function ListingDetailPage({ params }: ListingDetailPageProps) {
-  const listing = MOCK_LISTINGS.find((item) => item.id === params.id) || MOCK_LISTINGS[0];
+  const listing =
+    MOCK_LISTINGS.find((item) => item.id === params.id) || MOCK_LISTINGS[0];
 
   if (!listing) {
     notFound();
   }
 
   return (
-    <div className="py-8 bg-white">
+    <div className="py-8 bg-white min-h-screen">
       <Container>
-        {/* Заголовок и локация */}
+        {/* Хлебные крошки и заголовок */}
         <div className="mb-6">
           <div className="flex flex-wrap items-center justify-between gap-4 mb-2">
             <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-stone-gray-900">
               {listing.title}
             </h1>
             <div className="flex items-center gap-2">
-              <Button variant="outline" size="sm">
+              <Button variant="outline" size="sm" className="gap-1.5">
                 <Share2 className="w-4 h-4" /> Поделиться
               </Button>
-              <Button variant="outline" size="sm">
+              <Button variant="outline" size="sm" className="gap-1.5">
                 <Heart className="w-4 h-4 text-red-500" /> В избранное
               </Button>
             </div>
@@ -60,7 +58,9 @@ export default function ListingDetailPage({ params }: ListingDetailPageProps) {
             <div className="flex items-center gap-1 font-semibold text-stone-gray-900">
               <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
               <span>{listing.rating}</span>
-              <span className="text-stone-gray-400">({listing.reviewCount} отзывов)</span>
+              <span className="text-stone-gray-400">
+                ({listing.reviewCount} отзывов)
+              </span>
             </div>
             <span>•</span>
             <span className="flex items-center gap-1">
@@ -121,93 +121,48 @@ export default function ListingDetailPage({ params }: ListingDetailPageProps) {
 
             {/* Описание */}
             <div>
-              <h3 className="text-lg font-bold text-stone-gray-900 mb-3">О жилье</h3>
+              <h3 className="text-lg font-bold text-stone-gray-900 mb-3">
+                О жилье
+              </h3>
               <p className="text-stone-gray-600 leading-relaxed text-base">
                 {listing.description}
               </p>
             </div>
 
-            {/* Удобства */}
+            {/* Стилизованные удобства на русском языке с иконками */}
             <div className="pt-6 border-t border-stone-gray-200">
-              <h3 className="text-lg font-bold text-stone-gray-900 mb-4">Удобства</h3>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                {listing.amenities.map((amenity) => (
-                  <div
-                    key={amenity}
-                    className="flex items-center gap-2 text-sm text-stone-gray-700 bg-stone-gray-50 p-2.5 rounded-xl border border-stone-gray-200"
-                  >
-                    <Check className="w-4 h-4 text-green-600 shrink-0" />
-                    <span>{amenity}</span>
-                  </div>
-                ))}
+              <h3 className="text-lg font-bold text-stone-gray-900 mb-4">
+                Удобства
+              </h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+                {listing.amenities.map((amenityKey) => {
+                  const info = getAmenityInfo(amenityKey);
+                  return (
+                    <div
+                      key={amenityKey}
+                      className="flex items-center gap-3 p-3 rounded-2xl bg-[#FAF9F5] border border-stone-gray-200/80 hover:border-moss-300 hover:bg-moss-50/40 transition-colors"
+                    >
+                      <div className="w-8 h-8 rounded-xl bg-white flex items-center justify-center border border-stone-gray-200/80 shadow-soft-sm">
+                        {info.icon}
+                      </div>
+                      <span className="text-sm font-semibold text-stone-gray-800">
+                        {info.label}
+                      </span>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </div>
 
-          {/* Плавающий виджет бронирования */}
+          {/* Плавающий виджет бронирования с кастомными датами и гостями */}
           <div>
-            <div className="sticky top-28 bg-white rounded-3xl border border-stone-gray-200 p-6 shadow-soft-lg">
-              <div className="flex items-baseline justify-between mb-6">
-                <div>
-                  <span className="text-2xl font-extrabold text-stone-gray-900">
-                    {formatPrice(listing.pricePerNight)}
-                  </span>
-                  <span className="text-xs text-stone-gray-500 ml-1">/ сутки</span>
-                </div>
-                <div className="flex items-center gap-1 text-xs font-semibold text-stone-gray-700">
-                  <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
-                  <span>{listing.rating}</span>
-                </div>
-              </div>
-
-              {/* Форма дат и гостей */}
-              <div className="border border-stone-gray-200 rounded-2xl overflow-hidden mb-4 divide-y divide-stone-gray-200">
-                <div className="grid grid-cols-2 divide-x divide-stone-gray-200">
-                  <div className="p-3">
-                    <label className="text-[10px] font-bold uppercase tracking-wider text-moss-700 block">
-                      Заезд
-                    </label>
-                    <input
-                      type="date"
-                      defaultValue="2026-07-01"
-                      className="w-full text-xs font-semibold text-stone-gray-900 bg-transparent focus:outline-none cursor-pointer mt-1"
-                    />
-                  </div>
-                  <div className="p-3">
-                    <label className="text-[10px] font-bold uppercase tracking-wider text-moss-700 block">
-                      Выезд
-                    </label>
-                    <input
-                      type="date"
-                      defaultValue="2026-07-08"
-                      className="w-full text-xs font-semibold text-stone-gray-900 bg-transparent focus:outline-none cursor-pointer mt-1"
-                    />
-                  </div>
-                </div>
-                <div className="p-3">
-                  <label className="text-[10px] font-bold uppercase tracking-wider text-moss-700 block">
-                    Гости
-                  </label>
-                  <select className="w-full text-xs font-semibold text-stone-gray-900 bg-transparent focus:outline-none cursor-pointer mt-1">
-                    <option>2 гостей</option>
-                    <option>3 гостей</option>
-                    <option>4 гостей</option>
-                  </select>
-                </div>
-              </div>
-
-              <Button variant="primary" size="lg" className="w-full justify-center shadow-green-glow mb-4">
-                Забронировать
-              </Button>
-
-              <div className="text-center text-xs text-stone-gray-500 space-y-1">
-                <p>Вы пока ни за что не платите</p>
-                <p className="flex items-center justify-center gap-1 text-moss-700 font-medium">
-                  <ShieldCheck className="w-3.5 h-3.5" />
-                  Безопасная сделка ApsnyGO
-                </p>
-              </div>
-            </div>
+            <BookingCard
+              pricePerNight={listing.pricePerNight}
+              rating={listing.rating}
+              reviewCount={listing.reviewCount}
+              maxGuests={listing.maxGuests}
+            />
           </div>
         </div>
       </Container>
