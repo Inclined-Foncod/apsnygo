@@ -35,7 +35,7 @@ export const AppButton = forwardRef<HTMLButtonElement, AppButtonProps>(
 
       // Пульсирующий изумрудный ареол (glow effect) для темных баннеров
       glow:
-        'group relative bg-emerald-600 hover:bg-emerald-500 text-white font-semibold before:absolute before:inset-0 before:bg-emerald-500 before:rounded-2xl before:blur-lg before:opacity-40 before:-z-10 hover:before:opacity-75 before:transition-opacity border border-emerald-400/40',
+        'group relative bg-emerald-600 hover:bg-emerald-500 text-white font-semibold before:absolute before:-inset-1 before:bg-emerald-500 before:rounded-2xl before:blur-md before:opacity-30 before:-z-10 hover:before:opacity-60 before:transition-opacity border border-emerald-400/50 shadow-soft-sm',
 
       // Моховый благородный оттенок лесов Абхазии
       moss:
@@ -73,14 +73,18 @@ export const AppButton = forwardRef<HTMLButtonElement, AppButtonProps>(
         )}
         {...props}
       >
-        {/* Эффект бегущего светового блика (Shimmer) */}
+        {/* Эффект бегущего светового блика (Shimmer), строго изолированный внутри границ кнопки */}
         {shimmer && (
           <span
-            className="absolute inset-0 -translate-x-full group-hover:animate-shimmer bg-gradient-to-r from-transparent via-white/25 to-transparent pointer-events-none"
+            className="absolute inset-0 rounded-[inherit] overflow-hidden pointer-events-none"
             aria-hidden="true"
-          />
+          >
+            <span className="absolute inset-0 -translate-x-full group-hover:animate-shimmer bg-gradient-to-r from-transparent via-white/25 to-transparent" />
+          </span>
         )}
-        {children}
+        <span className="relative z-10 inline-flex items-center justify-center gap-[inherit]">
+          {children}
+        </span>
       </motion.button>
     );
   }

@@ -28,6 +28,14 @@ export const metadata: Metadata = {
   title: 'ApsnyGO — Агрегатор жилья и отдыха в Абхазии',
   description:
     'Бронирование проверенных отелей, гостевых домов, апартаментов и коттеджей в Гагре, Пицунде, Сухуме и Новом Афоне без посредников.',
+  icons: {
+    icon: [
+      { url: '/icon.png', sizes: '1024x1024', type: 'image/png' },
+      { url: '/icon.png' },
+    ],
+    shortcut: '/icon.png',
+    apple: '/icon.png',
+  },
   keywords: [
     'Абхазия',
     'жилье в Абхазии',
@@ -50,6 +58,9 @@ export default function RootLayout({
   return (
     <html lang="ru" className={`${plusJakarta.variable} ${outfit.variable}`}>
       <head>
+        {/* Иконка сайта (Favicon / App Icon) */}
+        <link rel="icon" href="/icon.png" sizes="any" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         {/* Прямой коннект к Google Fonts для максимальной совместимости */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />

@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState } from 'react';
 import { Container } from './Container';
 import { NAV_LINKS } from '@/lib/constants';
@@ -14,24 +15,21 @@ export function Header() {
     <header className="sticky top-0 z-50 bg-white/85 backdrop-blur-md border-b border-stone-200/80 shadow-[0_2px_12px_-4px_rgba(20,40,30,0.04)]">
       <Container>
         <div className="flex items-center justify-between h-20">
-          {/* Логотип ApsnyGO: 'Apsny' обычным шрифтом, 'GO' - стилизованная пиксельная кнопка */}
+          {/* Новый фирменный пиксельный логотип ApsnyGO */}
           <Link href="/" className="flex items-center gap-3 group select-none">
-            <div className="flex items-center tracking-tight">
-              {/* Слово Apsny обычным элегантным шрифтом */}
-              <span className="font-heading font-extrabold text-2xl sm:text-3xl text-stone-gray-900 group-hover:text-stone-gray-800 transition-colors">
-                Apsny
-              </span>
-
-              {/* Стилизованная пиксельная кнопка GO */}
-              <span className="ml-1.5 inline-flex items-center justify-center bg-green-600 text-white font-mono font-black text-xs sm:text-sm tracking-wider px-2 py-0.5 rounded-[3px] border-2 border-stone-gray-900 shadow-[2px_2px_0px_0px_#14532d] group-hover:shadow-[1px_1px_0px_0px_#14532d] group-hover:translate-x-[1px] group-hover:translate-y-[1px] active:shadow-none active:translate-x-[2px] active:translate-y-[2px] transition-all">
-                GO
-                <span className="inline-block w-1.5 h-1.5 ml-1 bg-green-200 animate-pulse rounded-full" />
-              </span>
+            <div className="relative h-11 w-32 sm:h-12 sm:w-36 transition-transform duration-200 group-hover:scale-105">
+              <Image
+                src="/logo.png"
+                alt="ApsnyGO"
+                fill
+                priority
+                className="object-contain object-left"
+              />
             </div>
 
             {/* Мягкий бейдж региона */}
-            <span className="hidden sm:inline-flex items-center gap-1 text-[11px] font-semibold tracking-wide text-moss-700 bg-moss-50 px-2 py-0.5 rounded-full border border-moss-200">
-              <Sparkles className="w-3 h-3 text-moss-600" />
+            <span className="hidden sm:inline-flex items-center gap-1 text-[11px] font-semibold tracking-wide text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200/70 shadow-soft-sm">
+              <Sparkles className="w-3 h-3 text-emerald-600" />
               Абхазия
             </span>
           </Link>

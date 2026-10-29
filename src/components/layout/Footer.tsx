@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { Container } from './Container';
 import { Trees, ShieldCheck, Headphones, Heart } from 'lucide-react';
 
@@ -54,13 +55,13 @@ export function Footer() {
         {/* Ссылки футера */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 py-12 border-b border-stone-200/80">
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 rounded-lg bg-green-600 flex items-center justify-center text-white">
-                <Trees className="w-4 h-4" />
-              </div>
-              <span className="font-heading font-bold text-xl text-stone-gray-900">
-                Apsny<span className="text-green-600">GO</span>
-              </span>
+            <div className="relative h-11 w-32 mb-3">
+              <Image
+                src="/logo.png"
+                alt="ApsnyGO"
+                fill
+                className="object-contain object-left"
+              />
             </div>
             <p className="text-xs text-stone-gray-500 leading-relaxed">
               Главный онлайн-агрегатор посуточного жилья и комфортного отдыха в Республике Абхазия.

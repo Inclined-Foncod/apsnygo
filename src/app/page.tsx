@@ -7,6 +7,7 @@ import { AppButton } from '@/components/ui/AppButton';
 import { SeasonBadge } from '@/components/ui/SeasonBadge';
 import { BackgroundPattern } from '@/components/ui/BackgroundPattern';
 import { PixelDivider } from '@/components/ui/PixelDivider';
+import { PixelMeadow } from '@/components/ui/PixelMeadow';
 import Link from 'next/link';
 import {
   Sparkles,
@@ -100,6 +101,11 @@ export default function HomePage() {
           <AbkhaziaMap />
         </Container>
       </section>
+
+      {/* Декоративная живая пиксельная диорама: горы, водопад, река и пасущиеся овечки */}
+      <Container>
+        <PixelMeadow />
+      </Container>
 
       {/* Декоративный пиксельный разделитель (горная вершина) */}
       <PixelDivider variant="mountain" />
