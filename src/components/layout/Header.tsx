@@ -4,14 +4,14 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { Container } from './Container';
 import { NAV_LINKS } from '@/lib/constants';
-import { Button } from '@/components/ui/Button';
+import { AppButton } from '@/components/ui/AppButton';
 import { Heart, Menu, X, PlusCircle, Sparkles } from 'lucide-react';
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-stone-gray-200 shadow-soft-sm">
+    <header className="sticky top-0 z-50 bg-white/85 backdrop-blur-md border-b border-stone-200/80 shadow-[0_2px_12px_-4px_rgba(20,40,30,0.04)]">
       <Container>
         <div className="flex items-center justify-between h-20">
           {/* Логотип ApsnyGO: 'Apsny' обычным шрифтом, 'GO' - стилизованная пиксельная кнопка */}
@@ -53,22 +53,22 @@ export function Header() {
           <div className="hidden md:flex items-center gap-3">
             <Link
               href="/favorites"
-              className="p-2.5 text-stone-gray-600 hover:text-moss-700 hover:bg-stone-gray-100 rounded-xl transition-colors relative"
+              className="p-2.5 text-stone-gray-600 hover:text-rose-600 hover:bg-stone-100/80 rounded-xl transition-all relative hover:scale-105 active:scale-95"
               title="Избранное"
             >
-              <Heart className="w-5 h-5" />
+              <Heart className="w-5 h-5 transition-transform group-hover:scale-110" />
             </Link>
 
             <Link href="/host">
-              <Button variant="outline" size="sm" className="hidden lg:inline-flex border-stone-gray-300">
-                <PlusCircle className="w-4 h-4 text-moss-600" />
-                Сдать жилье
-              </Button>
+              <AppButton variant="glass" size="sm" className="hidden lg:inline-flex">
+                <PlusCircle className="w-4 h-4 text-emerald-600 group-hover:scale-110 transition-transform duration-200" />
+                <span>Сдать жилье</span>
+              </AppButton>
             </Link>
 
-            <Button variant="primary" size="sm" className="shadow-green-glow">
-              Войти
-            </Button>
+            <AppButton variant="primary" size="sm">
+              <span>Войти</span>
+            </AppButton>
           </div>
 
           {/* Мобильная кнопка меню */}
@@ -102,16 +102,16 @@ export function Header() {
                 {link.label}
               </Link>
             ))}
-            <div className="pt-3 border-t border-stone-gray-200 flex flex-col gap-2">
+            <div className="pt-3 border-t border-stone-200/80 flex flex-col gap-2">
               <Link href="/host" onClick={() => setMobileMenuOpen(false)}>
-                <Button variant="outline" className="w-full justify-center">
-                  <PlusCircle className="w-4 h-4 text-moss-600" />
-                  Сдать жилье
-                </Button>
+                <AppButton variant="glass" className="w-full justify-center">
+                  <PlusCircle className="w-4 h-4 text-emerald-600" />
+                  <span>Сдать жилье</span>
+                </AppButton>
               </Link>
-              <Button variant="primary" className="w-full justify-center">
-                Войти в аккаунт
-              </Button>
+              <AppButton variant="primary" className="w-full justify-center">
+                <span>Войти в аккаунт</span>
+              </AppButton>
             </div>
           </div>
         )}

@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Button } from '@/components/ui/Button';
+import { AppButton } from '@/components/ui/AppButton';
 import {
   CustomSelect,
   SelectOption,
@@ -141,7 +141,7 @@ export function SearchBar() {
   return (
     <form
       onSubmit={handleSearch}
-      className="bg-white rounded-3xl p-2.5 md:p-3.5 shadow-soft-lg border border-stone-gray-200/90 max-w-4xl mx-auto"
+      className="bg-white/95 backdrop-blur-md rounded-3xl p-2.5 md:p-3.5 shadow-[0_12px_36px_-6px_rgba(20,40,30,0.08)] border border-stone-200/90 max-w-4xl mx-auto"
     >
       <div className="grid grid-cols-1 md:grid-cols-4 gap-2 items-center">
         {/* 1. Блок «Курорт» (Кастомный поповер с иконками и счетчиком) */}
@@ -166,19 +166,19 @@ export function SearchBar() {
           onChange={setGuests}
         />
 
-        {/* 4. Кнопка поиска */}
+        {/* 4. Кнопка поиска с тактильным откликом, шиммером и поворотом лупы */}
         <div className="p-1">
-          <Button
+          <AppButton
             type="submit"
             variant="primary"
             size="lg"
-            className="w-full h-14 rounded-2xl flex items-center justify-center gap-2 shadow-green-glow"
+            className="w-full h-14 rounded-2xl flex items-center justify-center gap-2"
           >
-            <Search className="w-5 h-5" />
+            <Search className="w-5 h-5 group-hover:rotate-12 transition-transform duration-200 shrink-0" />
             <span className="font-heading font-bold text-base">
               Найти жилье
             </span>
-          </Button>
+          </AppButton>
         </div>
       </div>
     </form>

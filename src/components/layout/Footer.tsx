@@ -4,10 +4,10 @@ import { Trees, ShieldCheck, Headphones, Heart } from 'lucide-react';
 
 export function Footer() {
   return (
-    <footer className="bg-stone-gray-50 border-t border-stone-gray-200 mt-20">
+    <footer className="bg-[#F8FAF7] border-t border-stone-200/90 mt-20 text-stone-gray-700">
       <Container className="py-14">
         {/* Преимущества ApsnyGO */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pb-12 border-b border-stone-gray-200">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pb-12 border-b border-stone-200/80">
           <div className="flex items-start gap-4">
             <div className="w-12 h-12 rounded-xl bg-green-100 text-green-700 flex items-center justify-center shrink-0">
               <ShieldCheck className="w-6 h-6" />
@@ -52,7 +52,7 @@ export function Footer() {
         </div>
 
         {/* Ссылки футера */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 py-12 border-b border-stone-gray-200">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 py-12 border-b border-stone-200/80">
           <div>
             <div className="flex items-center gap-2 mb-4">
               <div className="w-8 h-8 rounded-lg bg-green-600 flex items-center justify-center text-white">

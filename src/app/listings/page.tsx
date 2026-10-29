@@ -2,9 +2,10 @@
 
 import { Container } from '@/components/layout/Container';
 import { ListingCard } from '@/components/listings/ListingCard';
+import { BackgroundPattern } from '@/components/ui/BackgroundPattern';
 import { MOCK_LISTINGS } from '@/lib/mock-data';
 import { ABKHAZIA_CITIES } from '@/lib/constants';
-import { MapPin } from 'lucide-react';
+import { MapPin, Sparkles } from 'lucide-react';
 import { useSearchParams } from 'next/navigation';
 import { Suspense } from 'react';
 import Link from 'next/link';
@@ -21,18 +22,22 @@ function ListingsContent() {
   });
 
   return (
-    <div className="py-8 bg-white min-h-[calc(100vh-80px)]">
-      <Container>
+    <div className="py-10 bg-gradient-to-b from-[#FAFBF9] via-[#F6F8F5] to-[#FFFFFF] min-h-[calc(100vh-80px)] relative overflow-hidden">
+      {/* Водяной знак природы для каталога */}
+      <BackgroundPattern variant="pine-watermark" opacity="opacity-[0.03]" />
+
+      <Container className="relative z-10">
         {/* Хлебные крошки и заголовок */}
-        <div className="mb-6">
-          <span className="text-xs font-semibold uppercase tracking-wider text-moss-700">
+        <div className="mb-8">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200/70 text-emerald-800 text-xs font-semibold mb-2">
+            <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
             Поиск жилья в Абхазии
-          </span>
-          <h1 className="text-3xl font-extrabold text-stone-gray-900 mt-1">
+          </div>
+          <h1 className="text-3xl sm:text-4xl font-extrabold text-stone-gray-900 mt-1">
             {selectedCity ? `Жилье в г. ${selectedCity}` : 'Каталог жилья в Абхазии'}
           </h1>
-          <p className="text-sm text-stone-gray-500 mt-1">
-            Найдено вариантов: {filteredListings.length}
+          <p className="text-sm text-stone-gray-600 mt-1.5">
+            Найдено проверенных вариантов: <span className="font-bold text-emerald-800">{filteredListings.length}</span>
           </p>
         </div>
 
@@ -45,10 +50,10 @@ function ListingsContent() {
               <Link
                 key={city.id}
                 href={city.id === 'all' ? '/listings' : `/listings?city=${encodeURIComponent(city.name)}`}
-                className={`px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-colors border ${
+                className={`px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-all border ${
                   isActive
-                    ? 'bg-moss-700 text-white border-moss-700 shadow-soft-sm'
-                    : 'bg-stone-gray-50 text-stone-gray-700 border-stone-gray-200 hover:border-moss-400'
+                    ? 'bg-emerald-700 text-white border-emerald-700 shadow-soft-sm'
+                    : 'bg-white text-stone-gray-700 border-stone-200/90 hover:border-emerald-500/50 hover:bg-emerald-50/40 shadow-soft-sm'
                 }`}
               >
                 {city.name}

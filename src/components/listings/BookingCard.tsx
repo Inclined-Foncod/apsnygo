@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { Star, ShieldCheck, Sparkles, CheckCircle2 } from 'lucide-react';
-import { Button } from '@/components/ui/Button';
+import { AppButton } from '@/components/ui/AppButton';
 import {
   DateRangePicker,
   DateRange,
@@ -123,12 +123,12 @@ export function BookingCard({
       </div>
 
       {/* Кнопка бронирования */}
-      <Button
+      <AppButton
         type="button"
         onClick={handleBook}
         variant="primary"
         size="lg"
-        className="w-full justify-center shadow-green-glow mb-4 h-12 text-sm font-bold"
+        className="w-full justify-center mb-4 h-12 text-sm font-bold"
       >
         {isBooked ? (
           <span className="flex items-center gap-1.5 text-white">
@@ -138,7 +138,7 @@ export function BookingCard({
         ) : (
           'Забронировать'
         )}
-      </Button>
+      </AppButton>
 
       {/* Гарантии */}
       <div className="text-center text-xs text-stone-gray-500 space-y-1">

@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Badge } from '@/components/ui/Badge';
-import { Button } from '@/components/ui/Button';
+import { AppButton } from '@/components/ui/AppButton';
 import {
   MapPin,
   Waves,
@@ -549,9 +549,9 @@ export function AbkhaziaMap() {
       {/* 9. ИНФОРМАЦИОННАЯ КАРТОЧКА ВЫБРАННОГО КУРОРТА           */}
       {/* ======================================================= */}
       <div className="mt-6">
-        <div className="bg-white rounded-3xl border border-stone-gray-200/90 p-5 sm:p-6 shadow-soft flex flex-col md:flex-row items-center justify-between gap-6 transition-all">
+        <div className="bg-white/95 backdrop-blur-md rounded-3xl border border-stone-200/90 p-5 sm:p-6 shadow-[0_12px_36px_-6px_rgba(20,40,30,0.08)] flex flex-col md:flex-row items-center justify-between gap-6 transition-all">
             {/* Фото курорта с бейджем */}
-            <div className="relative w-full md:w-64 h-44 rounded-2xl overflow-hidden shrink-0 bg-stone-gray-100 border border-stone-gray-200">
+            <div className="relative w-full md:w-64 h-44 rounded-2xl overflow-hidden shrink-0 bg-stone-gray-100 border border-stone-200/80">
               <Image
                 src={selectedHotspot.image}
                 alt={selectedHotspot.name}
@@ -566,7 +566,7 @@ export function AbkhaziaMap() {
 
               {selectedHotspot.isPopular && (
                 <div className="absolute bottom-3 left-3">
-                  <Badge variant="green" className="bg-green-600/90 text-white border-none text-[10px] font-semibold backdrop-blur-md">
+                  <Badge variant="green" className="bg-emerald-600/90 text-white border-none text-[10px] font-semibold backdrop-blur-md">
                     Популярное направление
                   </Badge>
                 </div>
@@ -576,8 +576,8 @@ export function AbkhaziaMap() {
             {/* Описание выбранного объекта */}
             <div className="flex-1">
               <div className="flex flex-wrap items-center gap-2 mb-1.5">
-                <span className="flex items-center gap-1 text-xs font-bold text-moss-700">
-                  <MapPin className="w-3.5 h-3.5 text-moss-600" />
+                <span className="flex items-center gap-1 text-xs font-bold text-emerald-800">
+                  <MapPin className="w-3.5 h-3.5 text-emerald-600" />
                   {selectedHotspot.distanceToSea}
                 </span>
                 <span className="text-stone-gray-300">•</span>
@@ -604,9 +604,9 @@ export function AbkhaziaMap() {
                 {selectedHotspot.highlights.map((tag) => (
                   <span
                     key={tag}
-                    className="inline-flex items-center gap-1.5 text-xs font-medium text-stone-gray-700 bg-stone-gray-50 px-3 py-1.5 rounded-xl border border-stone-gray-200"
+                    className="inline-flex items-center gap-1.5 text-xs font-medium text-stone-gray-700 bg-stone-50 px-3 py-1.5 rounded-xl border border-stone-200/80"
                   >
-                    <CheckCircle2 className="w-3.5 h-3.5 text-green-600 shrink-0" />
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
                     {tag}
                   </span>
                 ))}
@@ -614,7 +614,7 @@ export function AbkhaziaMap() {
             </div>
 
             {/* Стартовая цена и кнопка перехода в каталог */}
-            <div className="flex md:flex-col items-center md:items-end justify-between w-full md:w-auto shrink-0 gap-4 border-t md:border-t-0 pt-4 md:pt-0 border-stone-gray-100">
+            <div className="flex md:flex-col items-center md:items-end justify-between w-full md:w-auto shrink-0 gap-4 border-t md:border-t-0 pt-4 md:pt-0 border-stone-100">
               <div className="text-left md:text-right">
                 <span className="text-[11px] uppercase tracking-wider text-stone-gray-400 block font-bold">
                   Жилье от
@@ -626,10 +626,10 @@ export function AbkhaziaMap() {
               </div>
 
               <Link href={`/listings?city=${encodeURIComponent(selectedHotspot.name.split(' ')[0])}`}>
-                <Button variant="primary" size="lg" className="gap-2 shadow-green-glow">
+                <AppButton variant="primary" size="lg" className="group">
                   <span>Смотреть варианты</span>
-                  <ArrowRight className="w-4 h-4" />
-                </Button>
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </AppButton>
               </Link>
             </div>
           </div>

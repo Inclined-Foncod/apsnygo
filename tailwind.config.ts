@@ -73,13 +73,26 @@ const config: Config = {
         heading: ['var(--font-outfit)', 'system-ui', 'sans-serif'],
         outfit: ['var(--font-outfit)', 'system-ui', 'sans-serif'],
         jakarta: ['var(--font-plus-jakarta)', 'system-ui', 'sans-serif'],
+        pixel: ['"Press Start 2P"', 'monospace'],
+      },
+      keyframes: {
+        shimmer: {
+          '0%': { transform: 'translateX(-100%)' },
+          '100%': { transform: 'translateX(200%)' },
+        },
+      },
+      animation: {
+        shimmer: 'shimmer 1.8s infinite',
       },
       boxShadow: {
         'soft-sm': '0 2px 8px -2px rgba(32, 34, 30, 0.05)',
         'soft': '0 4px 20px -2px rgba(32, 34, 30, 0.08)',
         'soft-lg': '0 10px 30px -4px rgba(32, 34, 30, 0.12)',
+        'card-hover': '0 20px 40px -15px rgba(0, 0, 0, 0.08)',
         'moss-glow': '0 4px 20px -2px rgba(88, 111, 62, 0.25)',
         'green-glow': '0 4px 20px -2px rgba(22, 163, 74, 0.25)',
+        'emerald-glow': '0 10px 25px -5px rgba(5, 150, 105, 0.4)',
+        'emerald-glow-lg': '0 15px 30px -5px rgba(5, 150, 105, 0.5)',
       },
       borderRadius: {
         '2xl': '1rem',

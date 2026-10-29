@@ -1,28 +1,33 @@
 import Link from 'next/link';
 import { Container } from '@/components/layout/Container';
 import { ListingCard } from '@/components/listings/ListingCard';
+import { BackgroundPattern } from '@/components/ui/BackgroundPattern';
 import { MOCK_LISTINGS } from '@/lib/mock-data';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Sparkles } from 'lucide-react';
 
 export function FeaturedListings() {
   return (
-    <section className="py-16 bg-stone-gray-50/60 border-y border-stone-gray-200">
-      <Container>
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10">
+    <section className="py-20 bg-[#F6F8F5]/80 border-y border-stone-200/80 relative overflow-hidden">
+      {/* Водяной знак природы: контур реликтовой сосны Пицунды */}
+      <BackgroundPattern variant="pine-watermark" opacity="opacity-[0.035]" />
+
+      <Container className="relative z-10">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
           <div>
-            <span className="text-xs font-bold uppercase tracking-wider text-green-700">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200/70 text-emerald-800 text-xs font-semibold mb-2">
+              <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
               Выбор путешественников
-            </span>
-            <h2 className="text-3xl font-bold text-stone-gray-900 mt-1">
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-stone-gray-900 tracking-tight">
               Рекомендуемое жилье
             </h2>
           </div>
           <Link
             href="/listings"
-            className="mt-3 md:mt-0 inline-flex items-center gap-1.5 text-sm font-semibold text-moss-700 hover:text-green-700 transition-colors"
+            className="mt-4 md:mt-0 inline-flex items-center gap-2 text-sm font-bold text-emerald-700 hover:text-emerald-800 transition-colors group"
           >
-            Смотреть весь каталог
-            <ArrowRight className="w-4 h-4" />
+            <span>Смотреть весь каталог</span>
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
 

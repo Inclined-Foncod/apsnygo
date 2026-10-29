@@ -36,7 +36,7 @@ export default function ListingDetailPage({ params }: ListingDetailPageProps) {
   }
 
   return (
-    <div className="py-8 bg-white min-h-screen">
+    <div className="py-8 bg-gradient-to-b from-[#FAFBF9] via-[#F6F8F5] to-[#FFFFFF] min-h-screen">
       <Container>
         {/* Хлебные крошки и заголовок */}
         <div className="mb-6">
