@@ -3,7 +3,7 @@ import { Listing } from '@/types/listing';
 export const MOCK_LISTINGS: Listing[] = [
   {
     id: '1',
-    title: 'Апартаменты с панорамным видом на море в Старой Гагре',
+    title: 'Апартаменты с видом на Гагрипш и море в Старой Гагре',
     slug: 'apartments-sea-view-old-gagra',
     type: 'apartment',
     city: 'Гагра',
@@ -13,6 +13,7 @@ export const MOCK_LISTINGS: Listing[] = [
     rating: 4.95,
     reviewCount: 42,
     images: [
+      '/images/destinations/gagra.jpg',
       'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=800&q=80',
       'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=800&q=80',
     ],
@@ -20,7 +21,7 @@ export const MOCK_LISTINGS: Listing[] = [
     bathrooms: 1,
     maxGuests: 4,
     description:
-      'Светлые просторные апартаменты на первой линии в самом сердце Старой Гагры. Вид на море и горы, свежий ремонт, закрытая территория.',
+      'Светлые просторные апартаменты на первой линии в самом сердце Старой Гагры рядом с рестораном Гагрипш и Приморским парком. Панорамный вид на море и горы, свежий ремонт, закрытая территория.',
     amenities: ['wifi', 'sea_view', 'air_conditioning', 'balcony', 'kitchen'],
     host: {
       id: 'h1',
@@ -43,6 +44,7 @@ export const MOCK_LISTINGS: Listing[] = [
     rating: 4.88,
     reviewCount: 29,
     images: [
+      '/images/destinations/pitsunda.jpg',
       'https://images.unsplash.com/photo-1587061949409-02df41d5e562?auto=format&fit=crop&w=800&q=80',
       'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80',
     ],
@@ -50,7 +52,7 @@ export const MOCK_LISTINGS: Listing[] = [
     bathrooms: 2,
     maxGuests: 6,
     description:
-      'Уютный деревянный эко-коттедж в заповедной сосновой роще. Целебный воздух, тишина, до кристально чистого пляжа 4 минуты пешком.',
+      'Уютный деревянный эко-коттедж в заповедной сосновой роще мыса Пицунда. Целебный хвойный воздух, кристально чистое море закрытой бухты, до пляжа 4 минуты пешком.',
     amenities: ['wifi', 'air_conditioning', 'parking', 'balcony', 'mountain_view', 'kitchen'],
     host: {
       id: 'h2',
@@ -63,7 +65,7 @@ export const MOCK_LISTINGS: Listing[] = [
   },
   {
     id: '3',
-    title: 'Бутик-отель «Скала» у Новоафонского монастыря',
+    title: 'Бутик-отель «Скала» у станции Псырцха в Новом Афоне',
     slug: 'boutique-hotel-skala-new-athos',
     type: 'hotel',
     city: 'Новый Афон',
@@ -73,6 +75,7 @@ export const MOCK_LISTINGS: Listing[] = [
     rating: 4.92,
     reviewCount: 56,
     images: [
+      '/images/destinations/new-athos.jpg',
       'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80',
       'https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80',
     ],
@@ -80,7 +83,7 @@ export const MOCK_LISTINGS: Listing[] = [
     bathrooms: 1,
     maxGuests: 2,
     description:
-      'Стильные номера с авторским дизайном в каменно-деревянном стиле. Панорамная терраса с видом на кипарисы и купола монастыря.',
+      'Стильные номера с авторским дизайном в каменно-деревянном стиле. Вид на бирюзовое ущелье Псырцхи, кипарисовые аллеи и златоглавый Симоно-Кананитский монастырь.',
     amenities: ['wifi', 'air_conditioning', 'breakfast', 'mountain_view', 'pool'],
     host: {
       id: 'h3',
@@ -103,6 +106,7 @@ export const MOCK_LISTINGS: Listing[] = [
     rating: 4.81,
     reviewCount: 38,
     images: [
+      '/images/destinations/sukhum.jpg',
       'https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80',
       'https://images.unsplash.com/photo-1598928506311-c55ded91a20c?auto=format&fit=crop&w=800&q=80',
     ],
@@ -110,7 +114,7 @@ export const MOCK_LISTINGS: Listing[] = [
     bathrooms: 1,
     maxGuests: 3,
     description:
-      'Атмосферный гостевой дом с внутренним субтропическим двориком. Шаговая доступность до знаменитой сухумской брехаловки и лучших кафе.',
+      'Атмосферный гостевой дом с внутренним субтропическим двориком. Шаговая доступность до знаменитой сухумской Колоннады, «Брехаловки» и лучших ресторанов апацха.',
     amenities: ['wifi', 'sea_view', 'air_conditioning', 'pet_friendly', 'parking'],
     host: {
       id: 'h4',
@@ -118,6 +122,127 @@ export const MOCK_LISTINGS: Listing[] = [
       avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80',
       isSuperhost: true,
       responseRate: 98,
+    },
+    featured: false,
+  },
+  {
+    id: '5',
+    title: 'Вилла у Часовой башни в тихой Гудауте',
+    slug: 'villa-clocktower-gudauta',
+    type: 'villa',
+    city: 'Гудаута',
+    address: 'ул. Героев, 14',
+    distanceToSeaMeters: 180,
+    pricePerNight: 4800,
+    rating: 4.89,
+    reviewCount: 22,
+    images: [
+      '/images/destinations/gudauta.jpg',
+      'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=800&q=80',
+      'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80',
+    ],
+    bedrooms: 3,
+    bathrooms: 2,
+    maxGuests: 6,
+    description:
+      'Просторная семейная вилла с пальмовым садом в историческом центре Гудауты. Широкие малолюдные песчано-галечные пляжи, тишина и теплое море.',
+    amenities: ['wifi', 'air_conditioning', 'parking', 'kitchen', 'balcony'],
+    host: {
+      id: 'h5',
+      name: 'Руслан',
+      avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80',
+      isSuperhost: true,
+      responseRate: 97,
+    },
+    featured: false,
+  },
+  {
+    id: '6',
+    title: 'Апартаменты у природного пляжа «Белые скалы» в Цандрипше',
+    slug: 'apartments-white-cliffs-tsandripsh',
+    type: 'apartment',
+    city: 'Цандрипш',
+    address: 'ул. Октябрьская, 27',
+    distanceToSeaMeters: 90,
+    pricePerNight: 3100,
+    rating: 4.85,
+    reviewCount: 31,
+    images: [
+      '/images/destinations/tsandripsh.jpg',
+      'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=800&q=80',
+    ],
+    bedrooms: 1,
+    bathrooms: 1,
+    maxGuests: 3,
+    description:
+      'Уютное жилье всего в 5 км от границы РФ. В 3 минутах пешком — уникальный мраморный пляж «Белые скалы» с прозрачной лазурной водой.',
+    amenities: ['wifi', 'sea_view', 'air_conditioning', 'kitchen'],
+    host: {
+      id: 'h6',
+      name: 'Саида',
+      avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200&q=80',
+      isSuperhost: false,
+      responseRate: 94,
+    },
+    featured: false,
+  },
+  {
+    id: '7',
+    title: 'Горное шале с панорамой Кавказских вершин на озере Рица',
+    slug: 'mountain-chalet-ritsa',
+    type: 'cottage',
+    city: 'Озеро Рица',
+    address: 'Рицинский реликтовый национальный парк',
+    distanceToSeaMeters: 950,
+    pricePerNight: 7500,
+    rating: 4.98,
+    reviewCount: 19,
+    images: [
+      '/images/destinations/ritsa.jpg',
+      'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80',
+    ],
+    bedrooms: 2,
+    bathrooms: 1,
+    maxGuests: 4,
+    description:
+      'Эксклюзивное высокогорное шале с панорамными окнами на изумрудные воды озера Рица и вековые реликтовые пихты. Камин, терраса с видом на горы.',
+    amenities: ['wifi', 'mountain_view', 'parking', 'balcony', 'breakfast'],
+    host: {
+      id: 'h7',
+      name: 'Тенгиз',
+      avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=200&q=80',
+      isSuperhost: true,
+      responseRate: 100,
+    },
+    featured: true,
+  },
+  {
+    id: '8',
+    title: 'Эко-домики у термальных источников Кындыг',
+    slug: 'eco-cabins-kyndyg-springs',
+    type: 'cottage',
+    city: 'Кындыг',
+    address: 'ул. Термальная, 5',
+    distanceToSeaMeters: 200,
+    pricePerNight: 2800,
+    rating: 4.87,
+    reviewCount: 27,
+    images: [
+      '/images/destinations/kyndyg.jpg',
+      'https://images.unsplash.com/photo-1587061949409-02df41d5e562?auto=format&fit=crop&w=800&q=80',
+    ],
+    bedrooms: 1,
+    bathrooms: 1,
+    maxGuests: 3,
+    description:
+      'Домики рядом со знаменитыми горячими сероводородными гейзерами и бассейнами с лечебной грязью Кындыг. Эвкалиптовая роща, свежий морской бриз.',
+    amenities: ['wifi', 'parking', 'air_conditioning', 'kitchen'],
+    host: {
+      id: 'h8',
+      name: 'Леон',
+      avatar: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=200&q=80',
+      isSuperhost: true,
+      responseRate: 99,
     },
     featured: false,
   },

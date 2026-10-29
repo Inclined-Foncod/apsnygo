@@ -244,7 +244,9 @@ export function DateRangePicker({
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -10, scale: 0.98 }}
             transition={{ duration: 0.16, ease: 'easeOut' }}
-            className="absolute top-full left-0 md:left-1/2 md:-translate-x-1/2 mt-2 z-50 w-84 sm:w-96 bg-[#FDFCF9] border border-stone-gray-200 rounded-3xl p-5 shadow-2xl backdrop-blur-md"
+            className={`absolute top-full mt-2 z-50 w-[calc(100vw-32px)] max-w-sm sm:w-96 bg-[#FDFCF9] border border-stone-gray-200 rounded-3xl p-5 shadow-2xl backdrop-blur-md ${
+              isHero ? 'left-0 md:left-1/2 md:-translate-x-1/2' : 'right-0'
+            }`}
           >
             {/* Навигация по месяцам */}
             <div className="flex items-center justify-between pb-3 mb-3 border-b border-stone-gray-200/80">

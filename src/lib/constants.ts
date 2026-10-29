@@ -1,11 +1,11 @@
 export const ABKHAZIA_CITIES = [
   { id: 'all', name: 'Вся Абхазия', count: 480 },
-  { id: 'gagra', name: 'Гагра', count: 185, image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80' },
-  { id: 'pitsunda', name: 'Пицунда', count: 112, image: 'https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=600&q=80' },
-  { id: 'sukhum', name: 'Сухум', count: 98, image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=600&q=80' },
-  { id: 'new-athos', name: 'Новый Афон', count: 64, image: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=600&q=80' },
-  { id: 'gudauta', name: 'Гудаута', count: 32, image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80' },
-  { id: 'tsandripsh', name: 'Цандрипш', count: 28, image: 'https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?auto=format&fit=crop&w=600&q=80' },
+  { id: 'gagra', name: 'Гагра', count: 185, image: '/images/destinations/gagra.jpg' },
+  { id: 'pitsunda', name: 'Пицунда', count: 112, image: '/images/destinations/pitsunda.jpg' },
+  { id: 'sukhum', name: 'Сухум', count: 98, image: '/images/destinations/sukhum.jpg' },
+  { id: 'new-athos', name: 'Новый Афон', count: 64, image: '/images/destinations/new-athos.jpg' },
+  { id: 'gudauta', name: 'Гудаута', count: 32, image: '/images/destinations/gudauta.jpg' },
+  { id: 'tsandripsh', name: 'Цандрипш', count: 28, image: '/images/destinations/tsandripsh.jpg' },
 ] as const;
 
 export const PROPERTY_TYPES = [
