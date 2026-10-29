@@ -3,6 +3,8 @@ import { Plus_Jakarta_Sans, Outfit } from 'next/font/google';
 import './globals.css';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
+import { AuthProvider } from '@/context/AuthContext';
+import { AuthModal } from '@/components/auth/AuthModal';
 
 const plusJakarta = Plus_Jakarta_Sans({
   subsets: ['latin', 'cyrillic-ext'],
@@ -70,9 +72,12 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-screen bg-white text-stone-gray-900 font-sans flex flex-col">
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <AuthProvider>
+          <Header />
+          <main className="flex-1">{children}</main>
+          <Footer />
+          <AuthModal />
+        </AuthProvider>
       </body>
     </html>
   );
