@@ -33,9 +33,9 @@ export const AppButton = forwardRef<HTMLButtonElement, AppButtonProps>(
       glass:
         'group relative bg-white/80 backdrop-blur-md border border-stone-200/90 text-stone-gray-800 hover:border-emerald-500/50 hover:bg-emerald-50/50 hover:text-emerald-800 shadow-soft-sm transition-colors',
 
-      // Пульсирующий изумрудный ареол (glow effect) для темных баннеров
+      // Изумрудная кнопка с внутренним свечением и мягким внутренним бликом (строго внутри рамок)
       glow:
-        'group relative bg-emerald-600 hover:bg-emerald-500 text-white font-semibold before:absolute before:-inset-1 before:bg-emerald-500 before:rounded-2xl before:blur-md before:opacity-30 before:-z-10 hover:before:opacity-60 before:transition-opacity border border-emerald-400/50 shadow-soft-sm',
+        'group relative overflow-hidden bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-semibold border border-emerald-400/50 shadow-[inset_0_1px_2px_rgba(255,255,255,0.35)]',
 
       // Моховый благородный оттенок лесов Абхазии
       moss:

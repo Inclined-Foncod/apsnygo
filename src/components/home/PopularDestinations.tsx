@@ -34,27 +34,32 @@ export function PopularDestinations() {
             <Link
               key={city.id}
               href={`/listings?city=${encodeURIComponent(city.name)}`}
-              className="group relative rounded-3xl overflow-hidden aspect-[3/4] bg-stone-gray-100 border border-stone-200/80 shadow-soft hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.12)] hover:-translate-y-1.5 transition-all duration-300"
+              className="group relative rounded-3xl overflow-hidden aspect-[3/4] bg-stone-900 border border-stone-200/80 shadow-soft hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.12)] hover:-translate-y-1.5 transition-all duration-300 block"
             >
+              {/* Фото курорта */}
               <Image
                 src={city.image}
                 alt={city.name}
                 fill
+                unoptimized
                 sizes="(max-width: 768px) 50vw, 20vw"
                 className="object-cover transition-transform duration-500 ease-out group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-stone-gray-950/85 via-stone-gray-950/25 to-transparent" />
 
-              <div className="absolute bottom-3.5 left-3.5 right-3.5 text-white">
+              {/* Мягкий градиент подложки для четкой читаемости белого текста */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent z-10 pointer-events-none" />
+
+              {/* Подпись курорта */}
+              <div className="absolute bottom-3.5 left-3.5 right-3.5 text-white z-20">
                 <div className="flex items-center justify-between">
-                  <h3 className="font-heading font-bold text-base group-hover:text-emerald-200 transition-colors">
+                  <h3 className="font-heading font-bold text-base text-white group-hover:text-emerald-200 transition-colors">
                     {city.name}
                   </h3>
                   <div className="w-6 h-6 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all -translate-y-1 group-hover:translate-y-0">
                     <ArrowUpRight className="w-3.5 h-3.5 text-emerald-300" />
                   </div>
                 </div>
-                <p className="text-[11px] text-stone-gray-300 mt-0.5 font-medium">
+                <p className="text-[11px] text-stone-200 mt-0.5 font-medium">
                   {city.count} вариантов
                 </p>
               </div>

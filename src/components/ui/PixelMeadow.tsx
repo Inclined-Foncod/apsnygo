@@ -22,7 +22,9 @@ export function PixelMeadow({ className }: PixelMeadowProps) {
         className
       )}
     >
-      <style jsx>{`
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
         @keyframes flowWater {
           0% {
             stroke-dashoffset: 0;
@@ -88,15 +90,20 @@ export function PixelMeadow({ className }: PixelMeadowProps) {
           animation: flowWater 2.4s linear infinite;
         }
         .sheep-roam-1 {
-          animation: graze1 38s ease-in-out infinite;
+          transform-origin: center center;
+          animation: graze1 54s ease-in-out infinite;
         }
         .sheep-roam-2 {
-          animation: graze2 44s ease-in-out infinite;
+          transform-origin: center center;
+          animation: graze2 62s ease-in-out infinite;
         }
         .sheep-roam-3 {
-          animation: graze3 48s ease-in-out infinite;
+          transform-origin: center center;
+          animation: graze3 68s ease-in-out infinite;
         }
-      `}</style>
+      `,
+        }}
+      />
 
       {/* Контейнер интерактивной пиксельной диорамы гор, реки от края до края и лугов */}
       <div className="relative max-w-6xl mx-auto h-36 sm:h-44 rounded-3xl bg-gradient-to-b from-[#E7F3E7]/70 via-[#DBECDB]/60 to-[#CEE6CE]/70 border border-stone-200/90 shadow-soft-sm overflow-hidden">
