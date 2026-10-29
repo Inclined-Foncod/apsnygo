@@ -124,11 +124,11 @@ export function CustomSelect({
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -10, scale: 0.98 }}
             transition={{ duration: 0.16, ease: 'easeOut' }}
-            className="absolute top-full left-0 mt-2 z-50 w-80 sm:w-88 bg-[#FDFCF9] border border-stone-gray-200 rounded-3xl p-3 shadow-2xl backdrop-blur-md"
+            className="absolute top-full left-0 mt-2 z-50 w-[calc(100vw-32px)] sm:w-[580px] md:w-[640px] max-w-[94vw] bg-[#FDFCF9] border border-stone-gray-200 rounded-3xl p-3 sm:p-4 shadow-2xl backdrop-blur-md"
           >
             {/* Поисковая строка внутри селектора */}
             {searchable && (
-              <div className="relative mb-2 px-1">
+              <div className="relative mb-3 px-1">
                 <Search className="w-4 h-4 text-stone-gray-400 absolute left-4 top-1/2 -translate-y-1/2" />
                 <input
                   ref={searchInputRef}
@@ -141,65 +141,70 @@ export function CustomSelect({
               </div>
             )}
 
-            {/* Список вариантов */}
-            <div className="max-h-68 overflow-y-auto space-y-1 pr-1 custom-scrollbar">
+            {/* Список вариантов в 2 столбца */}
+            <div className="max-h-72 overflow-y-auto pr-1 custom-scrollbar">
               {filteredOptions.length > 0 ? (
-                filteredOptions.map((opt) => {
-                  const isSelected = opt.value === value;
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 sm:gap-2">
+                  {filteredOptions.map((opt) => {
+                    const isSelected = opt.value === value;
+                    const isAllOption = opt.value === '' || opt.value === 'all';
 
-                  return (
-                    <button
-                      key={opt.value}
-                      type="button"
-                      onClick={() => handleSelect(opt.value)}
-                      className={`w-full flex items-center justify-between p-2.5 rounded-2xl text-left transition-all ${
-                        isSelected
-                          ? 'bg-emerald-50 text-emerald-900 border border-emerald-200/80'
-                          : 'hover:bg-stone-gray-100/70 text-stone-gray-800'
-                      }`}
-                    >
-                      <div className="flex items-center gap-2.5 min-w-0">
-                        {opt.icon && (
-                          <div
-                            className={`w-8 h-8 rounded-xl flex items-center justify-center shrink-0 ${
-                              isSelected
-                                ? 'bg-emerald-600 text-white'
-                                : 'bg-stone-gray-100 text-stone-gray-600'
-                            }`}
-                          >
-                            {opt.icon}
-                          </div>
-                        )}
-                        <div className="min-w-0">
-                          <div className="font-heading font-bold text-sm truncate flex items-center gap-1.5">
-                            <span>{opt.label}</span>
-                            {opt.badge && (
-                              <span className="text-[10px] font-semibold px-1.5 py-0.2 rounded-md bg-stone-gray-100 text-stone-gray-600 border border-stone-gray-200">
-                                {opt.badge}
-                              </span>
-                            )}
-                          </div>
-                          {opt.subtitle && (
-                            <div className="text-[11px] text-stone-gray-400 truncate">
-                              {opt.subtitle}
+                    return (
+                      <button
+                        key={opt.value}
+                        type="button"
+                        onClick={() => handleSelect(opt.value)}
+                        className={`w-full flex items-center justify-between p-2 sm:p-2.5 rounded-2xl text-left transition-all ${
+                          isAllOption ? 'sm:col-span-2 bg-stone-gray-50/80' : ''
+                        } ${
+                          isSelected
+                            ? 'bg-emerald-50 text-emerald-900 border border-emerald-300 shadow-sm'
+                            : 'hover:bg-stone-gray-100/80 text-stone-gray-800 border border-transparent hover:border-stone-gray-200/60'
+                        }`}
+                      >
+                        <div className="flex items-center gap-2 sm:gap-2.5 min-w-0">
+                          {opt.icon && (
+                            <div
+                              className={`w-7 h-7 sm:w-8 sm:h-8 rounded-xl flex items-center justify-center shrink-0 ${
+                                isSelected
+                                  ? 'bg-emerald-600 text-white'
+                                  : 'bg-white border border-stone-gray-200 text-stone-gray-600 shadow-soft-sm'
+                              }`}
+                            >
+                              {opt.icon}
                             </div>
                           )}
+                          <div className="min-w-0">
+                            <div className="font-heading font-bold text-xs sm:text-sm truncate flex items-center gap-1.5">
+                              <span>{opt.label}</span>
+                              {opt.badge && (
+                                <span className="text-[9px] font-semibold px-1.5 py-0.2 rounded-md bg-stone-gray-100 text-stone-gray-600 border border-stone-gray-200 shrink-0">
+                                  {opt.badge}
+                                </span>
+                              )}
+                            </div>
+                            {opt.subtitle && (
+                              <div className="text-[10px] sm:text-[11px] text-stone-gray-400 truncate">
+                                {opt.subtitle}
+                              </div>
+                            )}
+                          </div>
                         </div>
-                      </div>
 
-                      <div className="flex items-center gap-2 shrink-0 ml-2">
-                        {opt.count !== undefined && (
-                          <span className="text-[11px] font-semibold text-stone-gray-500 bg-white px-2 py-0.5 rounded-lg border border-stone-gray-200/80 shadow-soft-sm">
-                            {opt.count}
-                          </span>
-                        )}
-                        {isSelected && (
-                          <Check className="w-4 h-4 text-emerald-600 shrink-0" />
-                        )}
-                      </div>
-                    </button>
-                  );
-                })
+                        <div className="flex items-center gap-1.5 shrink-0 ml-1.5">
+                          {opt.count !== undefined && (
+                            <span className="text-[10px] font-semibold text-stone-gray-500 bg-white px-1.5 py-0.5 rounded-md border border-stone-gray-200/80 shadow-soft-sm">
+                              {opt.count}
+                            </span>
+                          )}
+                          {isSelected && (
+                            <Check className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                          )}
+                        </div>
+                      </button>
+                    );
+                  })}
+                </div>
               ) : (
                 <div className="py-6 text-center text-xs text-stone-gray-400">
                   Курорт не найден
